@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 public class VisualMachine {
     private JButton resetButton;
     private JButton spinButton;
+    private JLabel Machine;
+    private JPanel SpinMachine;
 
     public VisualMachine() {
         spinButton.addActionListener(new ActionListener() {
