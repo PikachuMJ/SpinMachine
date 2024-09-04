@@ -12,10 +12,9 @@ public class VisualMachine extends JFrame{
     public VisualMachine() {
 
         setContentPane(SpinMachine);
-        pack();
         setTitle("Spin Machine");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,8 +27,8 @@ public class VisualMachine extends JFrame{
 
             }
         });
-        Machine.setIcon(new ImageIcon("Machine.png"));
-
+        Machine.setIcon(new ImageIcon("resources/Machine.png"));
+        pack();
         setVisible(true);
     }
 }
