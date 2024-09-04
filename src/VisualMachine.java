@@ -15,7 +15,7 @@ public class VisualMachine extends JFrame{
         pack();
         setTitle("Spin Machine");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setResizable(false);
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,6 +28,7 @@ public class VisualMachine extends JFrame{
 
             }
         });
+        Machine.setIcon(new ImageIcon("Machine.png"));
 
         setVisible(true);
     }
