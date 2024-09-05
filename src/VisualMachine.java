@@ -66,7 +66,11 @@ public class VisualMachine extends JFrame{
                 if(Integer.parseInt(inputPoints.getText()) > points.getPoints()) {
                     showMessageDialog(null, "Du hast nicht genug Punkte");
                 }else {
-                    points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+                    try {
+                        points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+                    }catch (NumberFormatException ex) {
+                        showMessageDialog(null, "Falsche Eingabe");
+                    }
                     points.setPoints(points.getPoints() - Integer.parseInt(inputPoints.getText()));
                 }
             }
