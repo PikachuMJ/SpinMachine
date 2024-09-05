@@ -86,7 +86,8 @@
           </grid>
         </constraints>
         <properties>
-          <text value="input num = spins"/>
+          <text value="1"/>
+          <toolTipText value=""/>
         </properties>
       </component>
     </children>

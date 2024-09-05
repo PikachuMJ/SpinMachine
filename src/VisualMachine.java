@@ -30,15 +30,29 @@ public class VisualMachine extends JFrame{
                 spin.setMultiplier(1);
                 multiplierer.setSelectedIndex(0);
                 inputPoints.setText("Input points");
-                automateSpins.setText("input num = spins");
+                automateSpins.setText("1");
             }
         });
         spinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                points.setSpins(points.getSpins() + 1);
-                points.setPoints(points.getPoints() + spin.spin());
-                System.out.println(points.getPoints() + " " + points.getSpins());
+                int automate;
+                try {
+                    automate = Integer.parseInt(automateSpins.getText());
+                } catch (NumberFormatException ex) {
+                    automate = 1;
+                    automateSpins.setText("1");
+                }
+                for (int i = 0; i < automate; i++) {
+                    if (points.getPoints() < 0){
+                        points.setPoints(0);
+                        showMessageDialog(null, "Mach mich doch nicht arm");
+                        break;
+                    }
+                    points.setSpins(points.getSpins() + 1);
+                    points.setPoints(points.getPoints() + spin.spin());
+                    System.out.println(points.getPoints() + " " + points.getSpins());
+                }
             }
         });
         machine.setIcon(new ImageIcon("resources/Machine.png"));
