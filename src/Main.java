@@ -3,7 +3,8 @@ public class Main {
     public static void main(String[] args) {
         new VisualMachine();
     }
-    /*  TODO   1. moving spins
+    /*  TODO
+                1. moving spins
                2. automate spins
                3. see the points + spins on screen
                4. slot machine skins
