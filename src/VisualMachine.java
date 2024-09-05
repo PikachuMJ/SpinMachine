@@ -82,14 +82,17 @@ public class VisualMachine extends JFrame{
         inputPoints.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Integer.parseInt(inputPoints.getText()) > points.getPoints()) {
+                boolean isError = false;
+                try {
+                    points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+                }catch (NumberFormatException ex) {
+                    showMessageDialog(null, "Falsche Eingabe");
+                    isError = true;
+                }
+                if(isError && Integer.parseInt(inputPoints.getText()) > points.getPoints()) {
                     showMessageDialog(null, "Du hast nicht genug Punkte");
                 }else {
-                    try {
-                        points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
-                    }catch (NumberFormatException ex) {
-                        showMessageDialog(null, "Falsche Eingabe");
-                    }
+                    isError = false;
                     points.setPoints(points.getPoints() - Integer.parseInt(inputPoints.getText()));
                 }
             }
