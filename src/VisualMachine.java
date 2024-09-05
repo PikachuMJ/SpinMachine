@@ -6,14 +6,13 @@ import java.awt.event.ActionListener;
 public class VisualMachine extends JFrame{
     private JButton resetButton;
     private JButton spinButton;
-    private JLabel Machine;
+    private JLabel machine;
     private JPanel SpinMachine;
     private JComboBox multiplierer;
     private JTextField inputPoints;
-
+    private JTextField automateSpins;
 
     public VisualMachine() {
-
         Points points = new Points();
         Spin spin = new Spin();
 
@@ -36,7 +35,7 @@ public class VisualMachine extends JFrame{
                 System.out.println(points.getPoints() + " " + points.getSpins());
             }
         });
-        Machine.setIcon(new ImageIcon("resources/Machine.png"));
+        machine.setIcon(new ImageIcon("resources/Machine.png"));
         pack();
         setVisible(true);
         multiplierer.addActionListener(new ActionListener() {
@@ -62,6 +61,24 @@ public class VisualMachine extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+            }
+        });
+
+        automateSpins.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int automate;
+                try {
+                    automate = Integer.parseInt(automateSpins.getText());
+                } catch (NumberFormatException ex) {
+                    automate = 0;
+                    automateSpins.setText("Hä");
+                }
+                for (int i = 0; i < automate; i++) {
+                    points.setSpins(points.getSpins() + 1);
+                    points.setPoints(points.getPoints() + spin.spin());
+                    System.out.println(points.getPoints() + " " + points.getSpins());
+                }
             }
         });
     }
