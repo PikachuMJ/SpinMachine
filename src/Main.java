@@ -4,9 +4,8 @@ public class Main {
         new VisualMachine();
     }
     /*  TODO
-                1. moving spins
-               2. automate spins
-               3. see the points + spins on screen
-               4. slot machine skins
+               1. moving spins
+               2. see the points + spins on screen
+               3. slot machine skins
      */
 }

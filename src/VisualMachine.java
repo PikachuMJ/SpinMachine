@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 @SuppressWarnings("ALL")
 public class VisualMachine extends JFrame{
     private JButton resetButton;
@@ -19,7 +21,6 @@ public class VisualMachine extends JFrame{
         setContentPane(SpinMachine);
         setTitle("Spin Machine");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,6 +38,8 @@ public class VisualMachine extends JFrame{
         });
         machine.setIcon(new ImageIcon("resources/Machine.png"));
         pack();
+        setResizable(false);
+        setLocationRelativeTo(null);
         setVisible(true);
         multiplierer.addActionListener(new ActionListener() {
             @Override
@@ -60,7 +63,12 @@ public class VisualMachine extends JFrame{
         inputPoints.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+                if(Integer.parseInt(inputPoints.getText()) > points.getPoints()) {
+                    showMessageDialog(null, "Du hast nicht genug Punkte");
+                }else {
+                    points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+                    points.setPoints(points.getPoints() - Integer.parseInt(inputPoints.getText()));
+                }
             }
         });
 
@@ -75,6 +83,11 @@ public class VisualMachine extends JFrame{
                     automateSpins.setText("Hä");
                 }
                 for (int i = 0; i < automate; i++) {
+                    if (points.getPoints() < 0){
+                        points.setPoints(0);
+                        showMessageDialog(null, "Mach mich doch nicht arm");
+                        break;
+                    }
                     points.setSpins(points.getSpins() + 1);
                     points.setPoints(points.getPoints() + spin.spin());
                     System.out.println(points.getPoints() + " " + points.getSpins());

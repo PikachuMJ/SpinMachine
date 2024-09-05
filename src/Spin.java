@@ -20,7 +20,7 @@ public class Spin {
                 return 10000 * multiplierer;
             }
         }
-        return result[0]+result[1]+result[2];
+        return (result[0]+result[1]+result[2]) * multiplierer;
     }
     public int[] roll() {
         int[] roll = new int[3];
