@@ -1,7 +1,7 @@
 @SuppressWarnings("ALL")
 public class Points {
-    int points;
-    int spins;
+    private int points;
+    private int spins;
 
     public int getPoints() {
         return points;
