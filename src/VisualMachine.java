@@ -26,6 +26,11 @@ public class VisualMachine extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 points.setSpins(0);
                 points.setPoints(0);
+                points.setMoneyInEuro(0);
+                spin.setMultiplier(1);
+                multiplierer.setSelectedIndex(0);
+                inputPoints.setText("Input points");
+                automateSpins.setText("input num = spins");
             }
         });
         spinButton.addActionListener(new ActionListener() {
