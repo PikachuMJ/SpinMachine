@@ -17,6 +17,7 @@ public class VisualMachine extends JFrame{
     public VisualMachine() {
         Points points = new Points();
         Spin spin = new Spin();
+        Thread thread = null;
 
         setContentPane(SpinMachine);
         setTitle("Spin Machine");
@@ -52,6 +53,11 @@ public class VisualMachine extends JFrame{
                     points.setSpins(points.getSpins() + 1);
                     points.setPoints(points.getPoints() + spin.spin());
                     System.out.println(points.getPoints() + " " + points.getSpins());
+                    try {
+                        thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
         });
@@ -82,41 +88,11 @@ public class VisualMachine extends JFrame{
         inputPoints.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean isError = false;
                 try {
                     points.setMoneyInEuro(Integer.parseInt(inputPoints.getText()));
+                    points.setPoints(points.getPoints() - Integer.parseInt(inputPoints.getText()));
                 }catch (NumberFormatException ex) {
                     showMessageDialog(null, "Falsche Eingabe");
-                    isError = true;
-                }
-                if(isError && Integer.parseInt(inputPoints.getText()) > points.getPoints()) {
-                    showMessageDialog(null, "Du hast nicht genug Punkte");
-                }else {
-                    isError = false;
-                    points.setPoints(points.getPoints() - Integer.parseInt(inputPoints.getText()));
-                }
-            }
-        });
-
-        automateSpins.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int automate;
-                try {
-                    automate = Integer.parseInt(automateSpins.getText());
-                } catch (NumberFormatException ex) {
-                    automate = 0;
-                    automateSpins.setText("Hä");
-                }
-                for (int i = 0; i < automate; i++) {
-                    if (points.getPoints() < 0){
-                        points.setPoints(0);
-                        showMessageDialog(null, "Mach mich doch nicht arm");
-                        break;
-                    }
-                    points.setSpins(points.getSpins() + 1);
-                    points.setPoints(points.getPoints() + spin.spin());
-                    System.out.println(points.getPoints() + " " + points.getSpins());
                 }
             }
         });
