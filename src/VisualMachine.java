@@ -60,7 +60,7 @@ public class VisualMachine extends JFrame{
                     points.setSpins(points.getSpins() + 1);
                     points.setPoints(points.getPoints() + spin.spin());
                     rolledNums = spin.getRoll();
-                    for (int i = 0, )
+                    //for (int i = 0, )
                     System.out.println(points.getPoints() + " " + points.getSpins());
                     try {
                         thread.sleep(1000);
