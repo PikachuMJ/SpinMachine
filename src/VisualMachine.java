@@ -8,13 +8,19 @@ import static javax.swing.JOptionPane.showMessageDialog;
 public class VisualMachine extends JFrame{
     private JButton resetButton;
     private JButton spinButton;
-    private JLabel machine;
     private JPanel SpinMachine;
     private JComboBox multiplierer;
     private JTextField inputPoints;
     private JTextField automateSpins;
+    private JLabel slotOne;
+    private JLabel slotTwo;
+    private JLabel slotThree;
+    private int[] rolledNums;
 
-    public VisualMachine() {
+    public VisualMachine(){
+        System.out.println("test");
+    }
+    public void visualMachine() {
         Points points = new Points();
         Spin spin = new Spin();
         Thread thread = null;
@@ -50,8 +56,11 @@ public class VisualMachine extends JFrame{
                         showMessageDialog(null, "Mach mich doch nicht arm");
                         break;
                     }
+
                     points.setSpins(points.getSpins() + 1);
                     points.setPoints(points.getPoints() + spin.spin());
+                    rolledNums = spin.getRoll();
+                    for (int i = 0, )
                     System.out.println(points.getPoints() + " " + points.getSpins());
                     try {
                         thread.sleep(1000);
@@ -61,7 +70,10 @@ public class VisualMachine extends JFrame{
                 }
             }
         });
-        machine.setIcon(new ImageIcon("resources/Machine.png"));
+        slotOne.setIcon(new ImageIcon("resources/Placeholder.png"));
+        slotTwo.setIcon(new ImageIcon("resources/Placeholder.png"));
+        slotThree.setIcon(new ImageIcon("resources/Placeholder.png"));
+
         pack();
         setResizable(false);
         setLocationRelativeTo(null);

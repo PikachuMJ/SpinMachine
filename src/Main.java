@@ -1,7 +1,8 @@
 @SuppressWarnings("All")
 public class Main {
     public static void main(String[] args) {
-        new VisualMachine();
+        VisualMachine vm = new VisualMachine();
+        vm.visualMachine();
     }
     /*  TODO
                1. moving spins

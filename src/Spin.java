@@ -1,6 +1,16 @@
+import javax.swing.*;
+
 @SuppressWarnings("ALL")
-public class Spin {
+public class Spin{
+    public int[] roll = new int[3];
     private int multiplierer = 1;
+    ImageIcon[] slotIcons = {new ImageIcon("resources/Bell.png"),
+                         new ImageIcon("resources/Cherry.png"),
+                         new ImageIcon("resources/Horseshoe.png"),
+                         new ImageIcon("resources/Lemon.png"),
+                         new ImageIcon("resources/Melon.png"),
+                         new ImageIcon("resources/Jackpot.png")};
+
     public int spin() {
         int[] result = roll();
 
@@ -23,10 +33,12 @@ public class Spin {
         return (result[0]+result[1]+result[2]) * multiplierer;
     }
     public int[] roll() {
-        int[] roll = new int[3];
         for (int i = 0; i < 3; i++) {
             roll[i] = (int) (Math.random() * 6) + 1;
         }
+        return roll;
+    }
+    public int[] getRoll(){
         return roll;
     }
     public void setMultiplier(int multiplier) {
