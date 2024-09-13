@@ -16,6 +16,8 @@ public class VisualMachine extends JFrame{
     private JLabel slotTwo;
     private JLabel slotThree;
     private int[] rolledNums;
+    private ImageIcon[] slotIcons;
+    private JLabel[] slots = {slotOne, slotTwo, slotThree};
 
     public VisualMachine(){
         System.out.println("test");
@@ -60,10 +62,20 @@ public class VisualMachine extends JFrame{
                     points.setSpins(points.getSpins() + 1);
                     points.setPoints(points.getPoints() + spin.spin());
                     rolledNums = spin.getRoll();
-                    //for (int i = 0, )
+                    slotIcons = spin.getSlotIcons();
+                    for (int y = 0; y < 3; y++){
+                        switch (rolledNums[y]){
+                            case 1 -> slots[y].setIcon(slotIcons[0]);
+                            case 2 -> slots[y].setIcon(slotIcons[1]);
+                            case 3 -> slots[y].setIcon(slotIcons[2]);
+                            case 4 -> slots[y].setIcon(slotIcons[3]);
+                            case 5 -> slots[y].setIcon(slotIcons[4]);
+                            case 6 -> slots[y].setIcon(slotIcons[5]);
+                        }
+                    }
                     System.out.println(points.getPoints() + " " + points.getSpins());
                     try {
-                        thread.sleep(1000);
+                        thread.sleep(0);
                     } catch (InterruptedException ex) {
                         throw new RuntimeException(ex);
                     }

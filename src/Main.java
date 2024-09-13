@@ -5,8 +5,7 @@ public class Main {
         vm.visualMachine();
     }
     /*  TODO
-               1. moving spins
-               2. see the points + spins on screen
-               3. slot machine skins
+               1. see the points + spins on screen
+               2. slot machine skins
      */
 }

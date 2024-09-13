@@ -4,7 +4,7 @@ import javax.swing.*;
 public class Spin{
     public int[] roll = new int[3];
     private int multiplierer = 1;
-    ImageIcon[] slotIcons = {new ImageIcon("resources/Bell.png"),
+    private ImageIcon[] slotIcons = {new ImageIcon("resources/Bell.png"),
                          new ImageIcon("resources/Cherry.png"),
                          new ImageIcon("resources/Horseshoe.png"),
                          new ImageIcon("resources/Lemon.png"),
@@ -40,6 +40,9 @@ public class Spin{
     }
     public int[] getRoll(){
         return roll;
+    }
+    public ImageIcon[] getSlotIcons(){
+        return slotIcons;
     }
     public void setMultiplier(int multiplier) {
         this.multiplierer = multiplier;
