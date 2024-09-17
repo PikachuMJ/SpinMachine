@@ -20,7 +20,7 @@ public class VisualMachine extends JFrame{
     private JLabel[] slots = {slotOne, slotTwo, slotThree};
 
     public VisualMachine(){
-        System.out.println("test");
+        System.out.println("Start");
     }
     public void visualMachine() {
         Points points = new Points();
@@ -39,7 +39,7 @@ public class VisualMachine extends JFrame{
                 spin.setMultiplier(1);
                 multiplierer.setSelectedIndex(0);
                 inputPoints.setText("Input points");
-                automateSpins.setText("1");
+                resetImages();
             }
         });
         spinButton.addActionListener(new ActionListener() {
@@ -53,11 +53,6 @@ public class VisualMachine extends JFrame{
                     automateSpins.setText("1");
                 }
                 for (int i = 0; i < automate; i++) {
-                    if (points.getPoints() < 0){
-                        points.setPoints(0);
-                        showMessageDialog(null, "Mach mich doch nicht arm");
-                        break;
-                    }
 
                     points.setSpins(points.getSpins() + 1);
                     points.setPoints(points.getPoints() + spin.spin());
@@ -82,10 +77,7 @@ public class VisualMachine extends JFrame{
                 }
             }
         });
-        slotOne.setIcon(new ImageIcon("resources/Placeholder.png"));
-        slotTwo.setIcon(new ImageIcon("resources/Placeholder.png"));
-        slotThree.setIcon(new ImageIcon("resources/Placeholder.png"));
-
+        resetImages();
         pack();
         setResizable(false);
         setLocationRelativeTo(null);
@@ -120,5 +112,10 @@ public class VisualMachine extends JFrame{
                 }
             }
         });
+    }
+    public void resetImages(){
+        slotOne.setIcon(new ImageIcon("resources/Placeholder.png"));
+        slotTwo.setIcon(new ImageIcon("resources/Placeholder.png"));
+        slotThree.setIcon(new ImageIcon("resources/Placeholder.png"));
     }
 }
